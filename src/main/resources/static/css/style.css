@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+}
+header{
+    display: flex;
+    background-color: #f0f8ff;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    justify-content:center;
+}
+
+.content {
+    display: flex;
+    background-color: #dae0e6;
+    padding: 0.5rem 1rem;
+    justify-content: center;
+}
+
+.main-area {
+    width: 60%;
+}
+.side-area {
+    width: 25%;
+}
+
+footer {
+    display: flex;
+    background-color: #f0f8ff;
+    padding: 0.5rem 1rem;
+    justify-content: center;
+    align-items: center;
+}

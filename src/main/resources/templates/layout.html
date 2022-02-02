@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="common-meta">
+    <title>Layout page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body>
+<header>Header</header>
+<div class="content">
+    <main layout:fragment="content" class="main_area">
+        <p>Default Content</p>
+    </main>
+    <div class="side_area">Side Bar</div>
+</div>
+<footer>Footer</footer>
+</body>
+</html>

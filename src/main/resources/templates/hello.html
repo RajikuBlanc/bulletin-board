@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Hello">
     <title>Hello World</title>
 </head>
 <body>
-<h1>Hello World!</h1>
+<div layout:fragment="content">
+
+    <h1>Hello World!</h1>
+</div>
 </body>
 </html>
