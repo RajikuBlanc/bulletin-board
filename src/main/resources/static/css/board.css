@@ -1,4 +1,8 @@
-form{
-  display: flex;
-  flex-direction: column;
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.error_message {
+    color: #e02525;
 }

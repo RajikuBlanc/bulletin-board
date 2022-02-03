@@ -15,9 +15,12 @@
     <hr>
     <form method="POST" action="/board" th:object="${commentForm}">
         <input placeholder="名前" th:field="*{name}">
+        <span class="error_message" th:if="${#fields.hasErrors('name')}" th:error="*{name}">Name Error</span>
         <input placeholder="メールアドレス" th:field="*{email}">
+        <span class="error_message" th:if="${#fields.hasErrors('email')}" th:error="*{email}">Email Error</span>
         <textarea placeholder="コメント内容" rows="5" cols="80" wrap="off" th:field="*{comment}">
         </textarea>
+        <span class="error_message" th:if="${#fields.hasErrors('comment')}" th:error="*{comment}">Comment Error</span>
         <button>送信</button>
     </form>
 </div>
