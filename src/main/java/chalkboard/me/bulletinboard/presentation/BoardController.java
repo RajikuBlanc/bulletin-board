@@ -20,6 +20,7 @@ public class BoardController {
 
     @PostMapping("/board")
     public String postComment(@ModelAttribute CommentForm comment) {
-        return "board";
+//        二重送信防止のためにredirectを記述する
+        return "redirect:board";
     }
 }
