@@ -1,0 +1,20 @@
+# https://qiita.com/gami_/items/0208a7e6d1a41b447c84
+# https://spring.pleiades.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties.data.spring.datasource.hikari
+spring:
+  datasorce:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:develop;MODE=Oracle;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    hikari:
+      pool-name: ConnectionPool
+      leak-detection-threshold: 5000
+      maximum-pool-size: 20
+      minimum-idle: 10
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+  sql:
+    init:
+      schema-locations: classPath:h2/schema.sql
+      mode: embedded
+

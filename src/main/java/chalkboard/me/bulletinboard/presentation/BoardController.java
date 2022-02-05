@@ -1,6 +1,7 @@
 package chalkboard.me.bulletinboard.presentation;
 
 import chalkboard.me.bulletinboard.application.form.CommentForm;
+import chalkboard.me.bulletinboard.application.usecase.UserCommentUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequiredArgsConstructor
 public class BoardController {
+    private final UserCommentUseCase userCommentUseCase;
+
     @GetMapping("/board")
     public ModelAndView viewBoard(ModelAndView modelAndView) {
         modelAndView.setViewName("board");
@@ -27,6 +30,7 @@ public class BoardController {
             modelAndView.addObject("commentForm", comment);
             return modelAndView;
         }
+        userCommentUseCase.write(comment);
 //        二重送信防止のためにredirectを記述する
         return new ModelAndView("redirect:board");
     }
