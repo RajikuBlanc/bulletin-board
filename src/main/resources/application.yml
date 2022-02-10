@@ -17,4 +17,3 @@ spring:
     init:
       schema-locations: classPath:h2/schema.sql
       mode: embedded
-

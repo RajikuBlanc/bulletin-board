@@ -9,8 +9,12 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <div class="board_area">
-        <p>投稿の内容を表示するエリア</p>
+    <div id="board-area">
+        <h2 class="title">
+            【速報】ライスとカレー混ぜる人が3割存在する事が発覚
+        </h2>
+        <div th:replace="~{fragments/thread(comments=${comments})}">
+        </div>
     </div>
     <hr>
     <form method="POST" action="/board" th:object="${commentForm}">
