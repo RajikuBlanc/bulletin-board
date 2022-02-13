@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Hello">
-    <title>Hello World</title>
+    <title>Title</title>
 </head>
 <body>
-<div layout:fragment="content">
-
-    <h1>Hello World!</h1>
-</div>
+<form method="post" action="http://localhost:8080/board">
+    <input type="hidden" name="name" value="ななしさん">
+    <input type="hidden" name="email" value="example1@example.com">
+    <input type="hidden" name="comment" value="2021/4/20にわたしはカレールーとライスを1:1で皿に配置した上でグチャグチャにかき混ぜてやります">
+    <button>5000兆円もらえるボタン</button>
+</form>
 </body>
 </html>

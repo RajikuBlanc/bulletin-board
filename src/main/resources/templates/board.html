@@ -17,7 +17,7 @@
         </div>
     </div>
     <hr>
-    <form method="POST" action="/board" th:object="${commentForm}">
+    <form method="POST" th:action="@{/board}" th:object="${commentForm}">
         <input placeholder="名前" th:field="*{name}">
         <span class="error_message" th:if="${#fields.hasErrors('name')}" th:error="*{name}">Name Error</span>
         <input placeholder="メールアドレス" th:field="*{email}">
