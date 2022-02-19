@@ -15,5 +15,12 @@ spring:
       driver-class-name: org.h2.Driver
   sql:
     init:
-      schema-locations: classPath:h2/schema.sql
+      schema-locations:
+        - classPath:h2/schema.sql
+        - classPath:org/springframework/security/core/userdetails/jdbc/users.ddl
       mode: embedded
+  logging:
+    level:
+      org:
+        springframework:
+          security: DEBUG
