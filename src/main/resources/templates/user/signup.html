@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>掲示板</title>
+    <meta name="description" content="ユーザー登録">
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>新規登録</h2>
+    <form method="post" th:action="@{/user/signup}" th:object="${userForm}">
+        <div>
+            <input type="text" placeholder="UserName" th:field="*{username}">
+            <span class="error_message" th:if="${#fields.hasErrors('username')}"
+                  th:errors="*{username}">Name Error</span>
+        </div>
+        <div>
+            <input type="password" placeholder="Password" th:field="*{password}">
+            <span class="error_message" th:if="${#fields.hasErrors('password')}"
+                  th:errors="*{password}">Password Error</span>
+        </div>
+        <button>送信</button>
+    </form>
+</div>
+</body>
+</html>
