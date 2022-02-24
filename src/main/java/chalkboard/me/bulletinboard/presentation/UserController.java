@@ -1,7 +1,9 @@
 package chalkboard.me.bulletinboard.presentation;
 
 import chalkboard.me.bulletinboard.application.form.UserForm;
+import chalkboard.me.bulletinboard.application.usecase.UserAuthUseCase;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -11,10 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
+@Slf4j
 @Controller
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
+
+    private final UserAuthUseCase userAuthUseCase;
+
     // 登録ページの表示
     @GetMapping("/signup")
     public ModelAndView signup(ModelAndView modelAndView) {
@@ -25,7 +33,7 @@ public class UserController {
 
     // 新規登録フォーム
     @PostMapping("/signup")
-    public ModelAndView register(@Validated @ModelAttribute UserForm userForm, BindingResult bindingResult) {
+    public ModelAndView register(@Validated @ModelAttribute UserForm userForm, BindingResult bindingResult, HttpServletRequest request) {
         // もし送信エラーが起こった場合はフォーム画面を表示する
         if (bindingResult.hasErrors()) {
             ModelAndView modelAndView = new ModelAndView("user/signup");
@@ -34,6 +42,12 @@ public class UserController {
         }
 
         // TODO:作成処理
+        try {
+            userAuthUseCase.userCreate(userForm, request);
+        } catch (Exception e) {
+            log.error("ユーザー登録 or ログインの失敗", e);
+            return new ModelAndView("redirect:/user");
+        }
         return new ModelAndView("redirect:/board");
     }
 
