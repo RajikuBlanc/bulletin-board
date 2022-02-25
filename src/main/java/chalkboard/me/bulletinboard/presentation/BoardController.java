@@ -35,6 +35,6 @@ public class BoardController {
         }
         userCommentUseCase.write(comment);
 //        二重送信防止のためにredirectを記述する
-        return new ModelAndView("redirect:board");
+        return new ModelAndView("redirect:/board");
     }
 }

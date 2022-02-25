@@ -40,8 +40,6 @@ public class UserController {
             modelAndView.addObject("userForm", new UserForm());
             return modelAndView;
         }
-
-        // TODO:作成処理
         try {
             userAuthUseCase.userCreate(userForm, request);
         } catch (Exception e) {
@@ -50,5 +48,14 @@ public class UserController {
         }
         return new ModelAndView("redirect:/board");
     }
+
+    // ログインページの表示
+    @GetMapping
+    public ModelAndView loginPage(ModelAndView modelAndView) {
+        modelAndView.setViewName("user/login");
+        modelAndView.addObject("userForm", new UserForm());
+        return modelAndView;
+    }
+
 
 }

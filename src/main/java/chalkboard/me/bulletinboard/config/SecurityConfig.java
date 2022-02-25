@@ -32,13 +32,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated() それ以外へのアクセスは認証（ログイン）必要
             .and() 設定を終え、次の設定の開始
             .csrf().ignoringAntMatchers("パス") パスに設定したものはcsrfの対策はしない
+
+            .logout()
+             https://www.baeldung.com/spring-security-logout
          */
         http.authorizeRequests()
                 .antMatchers("/h2-console/**").hasRole("ADMIN")
                 .antMatchers("/board").hasRole("USER")
                 .and().formLogin()
-                .loginPage("/user")
+                .loginPage("/user").permitAll()
                 .defaultSuccessUrl("/board")
+                .and().logout()
+                .logoutUrl("/user/logout")
+                .logoutSuccessUrl("/user")
+
                 .and().csrf().ignoringAntMatchers("/h2-console/**")
                 // 同じドメインであればiframeを許可する
                 .and().headers().frameOptions().sameOrigin();
