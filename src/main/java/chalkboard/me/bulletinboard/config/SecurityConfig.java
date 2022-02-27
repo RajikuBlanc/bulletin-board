@@ -1,4 +1,5 @@
 // https://spring.pleiades.io/spring-security/site/docs/current/api/org/springframework/security/config/annotation/web/builders/HttpSecurity.html#authorizeRequests()
+// Thymeleaf springSecurity リファレンス https://www.thymeleaf.org/doc/articles/springsecurity.html
 /*
     実装方法
     https://taka31blog.com/springboot-authentication/

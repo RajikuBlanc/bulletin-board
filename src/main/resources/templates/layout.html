@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="common-meta">
@@ -7,7 +11,29 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 </head>
 <body>
-<header>Header</header>
+<header>
+    <div>
+        <h1 id="logo">掲示板</h1>
+    </div>
+    <div class="account">
+        <div th:if="${#authorization.expression('isAuthenticated()')}">
+            <form th:action="@{/user/logout}" method="post">
+                <button class="logout-button">ログアウト</button>
+            </form>
+        </div>
+        <div th:if="${#authorization.expression('!isAuthenticated()')}">
+            <a href="/user">
+                <div>ログイン</div>
+            </a>
+            <a href="/user/signup">
+                <div>
+                    サインアップ
+                </div>
+            </a>
+        </div>
+    </div>
+</header>
+
 <div class="content">
     <main layout:fragment="content" class="main_area">
         <p>Default Content</p>
