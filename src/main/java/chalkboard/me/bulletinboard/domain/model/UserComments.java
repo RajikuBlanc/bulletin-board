@@ -7,6 +7,7 @@ import chalkboard.me.bulletinboard.domain.type.Name;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
@@ -27,6 +28,7 @@ public class UserComments {
     @Getter
     public static class UserComment {
         private final int id;
+        private final UserId userId;
         private final Name name;
         private final Email email;
         private final Comment comment;
@@ -34,12 +36,19 @@ public class UserComments {
 
         public static UserComment from(
                 int id,
+                String userId,
                 String name,
                 String email,
                 String comment,
                 LocalDateTime dateTime
         ) {
-            return new UserComment(id, Name.from(name), Email.from(email), Comment.from(comment), DateTime.from(dateTime));
+            return new UserComment(
+                    id, UserId.from(userId),
+                    Name.from(name),
+                    Email.from(email),
+                    Comment.from(comment),
+                    DateTime.from(dateTime)
+            );
         }
 
     }

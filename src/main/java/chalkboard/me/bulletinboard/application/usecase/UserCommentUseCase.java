@@ -5,6 +5,7 @@ import chalkboard.me.bulletinboard.domain.model.UserComment;
 import chalkboard.me.bulletinboard.domain.model.UserCommentRepository;
 import chalkboard.me.bulletinboard.domain.model.UserComments;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,9 +13,10 @@ import org.springframework.stereotype.Service;
 public class UserCommentUseCase {
     private final UserCommentRepository repository;
 
-    public void write(CommentForm commentForm) {
+    public void write(CommentForm commentForm, User user) {
         UserComment userComment = UserComment.from(
                 commentForm.getName(),
+                user.getUsername(),
                 commentForm.getEmail(),
                 commentForm.getComment()
         );

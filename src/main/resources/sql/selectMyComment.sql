@@ -1,0 +1,1 @@
+SELECT * FROM USER_COMMENT WHERE USER_ID = /*[# mb:p="userId"]*/ 1 /*[/]*/
