@@ -1,4 +1,4 @@
-INSERT INTO USER_COMMENT(NAME, email, TEXT) VALUES (
+INSERT INTO USER_COMMENT(NAME, USER_ID, EMAIL, TEXT) VALUES (
   /*[# mb:p="dto.name"]*/ 'name' /*[/]*/,
   /*[# mb:p="dto.userId"]*/ 'userId' /*[/]*/,
   /*[# mb:p="dto.email"]*/ 'email' /*[/]*/,

@@ -5,6 +5,7 @@ import chalkboard.me.bulletinboard.application.dto.UserCommentRead;
 import chalkboard.me.bulletinboard.domain.model.UserComment;
 import chalkboard.me.bulletinboard.domain.model.UserCommentRepository;
 import chalkboard.me.bulletinboard.domain.model.UserComments;
+import chalkboard.me.bulletinboard.domain.model.UserId;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +25,16 @@ public class UserCommentDatasource implements UserCommentRepository {
     @Override
     public UserComments select() {
         List<UserCommentRead> dtos = mapper.select();
+        return convert(dtos);
+    }
 
+    @Override
+    public UserComments select(UserId userId) {
+        List<UserCommentRead> dtos = mapper.selectById(userId.toString());
+        return convert(dtos);
+    }
+
+    private UserComments convert(List<UserCommentRead> dtos) {
         return UserComments.from(
                 dtos.stream().map(dto -> UserComments.UserComment.from(
                         dto.getId(),
@@ -36,4 +46,5 @@ public class UserCommentDatasource implements UserCommentRepository {
                 )).collect(Collectors.toUnmodifiableList())
         );
     }
+
 }

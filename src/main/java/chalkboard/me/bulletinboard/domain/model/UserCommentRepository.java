@@ -5,4 +5,6 @@ public interface UserCommentRepository {
 
     UserComments select();
 
+    UserComments select(UserId userId);
+
 }
